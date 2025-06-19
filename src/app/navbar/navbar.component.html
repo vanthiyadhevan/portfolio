@@ -1,0 +1,34 @@
+<nav class="navbar shadow-lg navbar-expand-lg bg-primary navbar-dark sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand">ARUN MALARAVAN</a>
+    <button class="btn btn-primary navbar-toggler  me-auto" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"> <span
+        class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="contact">Contact</a>
+        </li>
+      </ul> -->
+    </div>
+
+    <div class="offcanvas offcanvas-start d-lg-none" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Browse docs</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body container d-lg-none">
+        <app-sidebar></app-sidebar>
+      </div>
+    </div>
+  </div>
+</nav>

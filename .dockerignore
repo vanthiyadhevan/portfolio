@@ -1,0 +1,7 @@
+# this docker ingore file 
+#
+
+.gitignore
+.git
+node_modules
+Dockerfile

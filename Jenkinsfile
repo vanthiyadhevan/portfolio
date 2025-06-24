@@ -59,8 +59,10 @@ pipeline {
     post {
         always {
             script {
-                if (fileExists('portfolio_k8s')) {
-                    sh 'rm -rf portfolio_k8s'
+                node {
+                    if (fileExists('portfolio_k8s')) {
+                        sh 'rm -rf portfolio_k8s'
+                    }
                 }
             }
         }

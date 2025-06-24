@@ -26,7 +26,9 @@ pipeline {
         stage('Push Image to Repo') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'DOCKER_USER')]) {
-                    sh 'docker push ${DOCKER_USER}/${IMAGE_NAME}:${BUILD_ID}'
+                    sh '''
+                        docker push ${USER_NAME}/${IMAGE_NAME}:${BUILD_ID}
+                    '''
                 }
             }
         }

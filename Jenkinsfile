@@ -44,6 +44,7 @@ pipeline {
                         rm -rf portfolio_k8s
                         git clone https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git
                         cd ${GIT_REPO_NAME}/portfolio
+                        git remote set-url origin https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/portfolio_k8s.git
                         cat values.yaml
                         sed -i "s/tag:.*/tag: '${BUILD_ID}'/" values.yaml
 

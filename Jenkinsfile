@@ -5,6 +5,9 @@ pipeline {
         USER_NAME = 'vanthiyadevan'
         IMAGE_NAME = 'portfolio'
     }
+    tools {
+        nodejs 'nodejs'
+    }
 
     stages {
 

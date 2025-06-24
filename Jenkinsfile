@@ -4,7 +4,6 @@ pipeline {
     environment {
         USER_NAME = 'vanthiyadevan'
         IMAGE_NAME = 'portfolio'
-        GITHUB_TOKEN = credentialsId('github')
     }
 
     stages {
@@ -24,10 +23,7 @@ pipeline {
         stage('Push Image to Repo') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASSWORD', usernameVariable: 'DOCKER_USER')]) {
-                    sh '''
-                        echo "${PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
-                        docker push ${DOCKER_USER}/${IMAGE_NAME}:${BUILD_ID}
-                    '''
+                    sh 'docker push ${DOCKER_USER}/${IMAGE_NAME}:${BUILD_ID}'
                 }
             }
         }

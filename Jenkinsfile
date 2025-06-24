@@ -4,6 +4,7 @@ pipeline {
     environment {
         USER_NAME = 'vanthiyadevan'
         IMAGE_NAME = 'portfolio'
+        GITHUB_TOKEN = credentialsId('github')
     }
 
     stages {
@@ -37,20 +38,28 @@ pipeline {
                 GIT_REPO_NAME = 'portfolio_k8s'
             }
             steps {
-                withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_TOKEN')]) {
+                withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                     sh '''
                         rm -rf portfolio_k8s
                         git clone https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git
                         cd ${GIT_REPO_NAME}/portfolio
+                        cat values.yaml
                         sed -i "s/tag:.*/tag: '${BUILD_ID}'/" values.yaml
 
-                        git config user.email "jenkins@yourdomain.com"
-                        git config user.name "Jenkins"
+                        git config user.email "samvickey96@gmail.com"
+                        git config user.name ${GIT_USER_NAME}
                         git add values.yaml
                         git commit -m "Updated image tag to ${BUILD_ID}"
                         git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
                     '''
                 }
+            }
+        }
+    }
+    post {
+        always {
+            if (fileExists('portfolio_k8s')) {
+                sh 'rm -rf portfolio_k8s'
             }
         }
     }

@@ -8,7 +8,7 @@ import { Component, OnInit, Renderer2, ElementRef, ViewChild } from '@angular/co
 export class HomeComponent implements OnInit {
   @ViewChild('typingText', { static: true }) typingTextRef: ElementRef | undefined;
 
-  private phrases: string[] = ["FULL STACK DEVELOPMENT","FRONTEND DEVELOPMENT","BACKEND DEVELOPMENT","WEB DESIGNING","WEB DEVELOPMENT"];
+  private phrases: string[] = ["DevOps Engineer","AWS Architect","Cloud Engineer","AI Engineer"];
   private currentPhraseIndex: number = 0;
   private currentPhrase: string = '';
   private isTyping: boolean = true;
